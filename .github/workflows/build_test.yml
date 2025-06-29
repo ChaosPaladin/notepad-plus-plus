@@ -25,14 +25,12 @@ jobs:
       - name: Build project
         run: |
           msbuild PowerEditor\visual.net\notepadPlus.vcxproj /p:Configuration=Release /p:Platform="x64"
-        working-directory: notepad-plus-plus
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: notepadpp-executable
           path: PowerEditor\visual.net\x64\Release\notepad++.exe
-          working-directory: notepad-plus-plus
 
   release:
     needs: build
