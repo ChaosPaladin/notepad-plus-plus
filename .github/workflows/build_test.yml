@@ -21,7 +21,7 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
-      - name: Debug: list .vcxproj files
+      - name: Debug list .vcxproj files
         run: |
           Get-ChildItem -Path . -Filter *.vcxproj -Recurse | Select-Object FullName
 
