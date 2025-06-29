@@ -1,0 +1,48 @@
+name: Build and Release Notepad++
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    name: Build Notepad++
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Build project
+        run: |
+          msbuild notepadPlus.vcxproj /p:Configuration=Release /p:Platform="x64"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: notepadpp-executable
+          path: path\to\Release\notepad++.exe
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    name: Create GitHub Release
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: notepadpp-executable
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "Notepad++ Release"
+          tag_name: v1.0.${{ github.run_number }}
+          files: notepad++.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
