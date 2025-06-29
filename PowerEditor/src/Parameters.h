@@ -164,7 +164,7 @@ const int COPYDATA_FULL_CMDLINE = 3;
 
 #define NPP_STYLING_FILESIZE_LIMIT_DEFAULT (200 * 1024 * 1024) // 200MB+ file won't be styled
 
-const int FINDREPLACE_INSELECTION_THRESHOLD_DEFAULT = 1024;
+const int FINDREPLACE_INSELECTION_THRESHOLD_DEFAULT = 102400;
 
 const wchar_t fontSizeStrs[][3] = {L"", L"5", L"6", L"7", L"8", L"9", L"10", L"11", L"12", L"14", L"16", L"18", L"20", L"22", L"24", L"26", L"28"};
 
