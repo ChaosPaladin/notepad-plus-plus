@@ -1362,10 +1362,10 @@ void Notepad_plus::command(int id)
 
 			if (nppGui._fillFindFieldWithSelected)
 			{
-				if (lstrlen(str) <= FINDREPLACE_INSELECTION_THRESHOLD_DEFAULT)
-				{
+				//if (lstrlen(str) <= FINDREPLACE_INSELECTION_THRESHOLD_DEFAULT)
+				//{
 					_findReplaceDlg.setSearchText(str);
-				}
+				//}
 			}
 
 			setFindReplaceFolderFilter(NULL, NULL);
